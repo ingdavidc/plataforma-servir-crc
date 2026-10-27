@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Crc {
+  id              String        @id @default(uuid())
+  nombre          String
+  codigoControl   String        @unique @map("codigo_control")
+  nit             String
+  ciudad          String
+  activo          Boolean       @default(true)
+  creadoEn        DateTime      @default(now()) @map("creado_en")
+  certificados    Certificado[]
+  apiKeys         ApiKey[]
+
+  @@map("crcs")
+}
+
+model Certificado {
+  id                  String        @id @default(uuid())
+  crcId               String        @map("crc_id")
+  numeroCertificado   String        @unique @map("numero_certificado")
+  codigoVerificacion  String        @unique @map("codigo_verificacion")
+  tipoDocumento       String        @map("tipo_documento")
+  numeroDocumento     String        @map("numero_documento")
+  nombres             String
+  apellidos           String
+  dictamen            String        // APTO | NO APTO
+  objetivo            String        // PORTE_CIVIL | SEGURIDAD_PRIVADA
+  fechaExpedicion     DateTime      @map("fecha_expedicion")
+  fechaVencimiento    DateTime      @map("fecha_vencimiento")
+  estado              String        @default("VIGENTE") // VIGENTE | VENCIDO | ANULADO
+  pdfPath             String        @map("pdf_path")
+  qrToken             String?       @map("qr_token")
+  sincronizadoEn      DateTime      @default(now()) @map("sincronizado_en")
+  crc                 Crc           @relation(fields: [crcId], references: [id])
+  logs                LogConsulta[]
+
+  @@index([numeroDocumento])
+  @@index([estado])
+  @@map("certificados")
+}
+
+model ApiKey {
+  id        String   @id @default(uuid())
+  crcId     String   @map("crc_id")
+  keyHash   String   @map("key_hash")
+  activa    Boolean  @default(true)
+  creadaEn  DateTime @default(now()) @map("creada_en")
+  crc       Crc      @relation(fields: [crcId], references: [id])
+
+  @@map("api_keys")
+}
+
+model UsuarioPanel {
+  id        String   @id @default(uuid())
+  nombre    String
+  email     String   @unique
+  password  String
+  entidad   String
+  rol       String   @default("SECCIONAL") // SECCIONAL | ADMIN
+  activo    Boolean  @default(true)
+  creadoEn  DateTime @default(now()) @map("creado_en")
+
+  @@map("usuarios_panel")
+}
+
+model LogConsulta {
+  id            String       @id @default(uuid())
+  certificadoId String?      @map("certificado_id")
+  tipoAccion    String       @map("tipo_accion") // VERIFICACION | DESCARGA | BUSQUEDA
+  ip            String
+  detalles      String?
+  fecha         DateTime     @default(now())
+  certificado   Certificado? @relation(fields: [certificadoId], references: [id])
+
+  @@map("logs_consulta")
+}

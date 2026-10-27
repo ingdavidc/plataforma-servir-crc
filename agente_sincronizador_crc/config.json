@@ -1,0 +1,7 @@
+{
+  "servidor_api_url": "http://localhost:3000/api/certificados/sync",
+  "codigo_control_crc": "DGSM-CRC-042",
+  "intervalo_segundos": 5,
+  "patron_nombre_archivo": "{consecutivo}_{tipo_doc}_{num_doc}_{dictamen}_{nombres_apellidos}.pdf",
+  "ejemplo_nombre": "000127-27-10-2026_CC_1015487920_APTO_JORGE ELIECER GAITAN.pdf"
+}
