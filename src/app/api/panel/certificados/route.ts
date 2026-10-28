@@ -85,14 +85,18 @@ export async function GET(request: NextRequest) {
     ]);
 
     // Log the search
-    const ip = request.headers.get("x-forwarded-for") || "unknown";
-    await prisma.logConsulta.create({
-      data: {
-        tipoAccion: "BUSQUEDA",
-        ip: ip,
-        detalles: JSON.stringify({ buscar, estado, fechaDesde, fechaHasta, userId: user.userId }),
-      },
-    });
+    try {
+      const ip = request.headers.get("x-forwarded-for") || "unknown";
+      await prisma.logConsulta.create({
+        data: {
+          tipoAccion: "BUSQUEDA",
+          ip: ip,
+          detalles: JSON.stringify({ buscar, estado, fechaDesde, fechaHasta, userId: user.userId }),
+        },
+      });
+    } catch (err) {
+      console.warn("Log de busqueda no guardado:", err);
+    }
 
     return NextResponse.json({
       certificados,

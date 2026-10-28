@@ -39,18 +39,22 @@ export async function GET(request: NextRequest) {
     }
 
     // Log the download
-    const ip =
-      request.headers.get("x-forwarded-for") ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
-    await prisma.logConsulta.create({
-      data: {
-        certificadoId: certificado.id,
-        tipoAccion: "DESCARGA",
-        ip: ip,
-        detalles: JSON.stringify({ tipoDocumento, numeroDocumento }),
-      },
-    });
+    try {
+      const ip =
+        request.headers.get("x-forwarded-for") ||
+        request.headers.get("x-real-ip") ||
+        "unknown";
+      await prisma.logConsulta.create({
+        data: {
+          certificadoId: certificado.id,
+          tipoAccion: "DESCARGA",
+          ip: ip,
+          detalles: JSON.stringify({ tipoDocumento, numeroDocumento }),
+        },
+      });
+    } catch (err) {
+      console.warn("Log de descarga no guardado:", err);
+    }
 
     // Read the PDF file
     const pdfPath = path.join(process.cwd(), "public", certificado.pdfPath);

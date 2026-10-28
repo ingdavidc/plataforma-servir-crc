@@ -45,25 +45,33 @@ export async function GET(request: NextRequest) {
     let estado = certificado.estado;
     if (estado === "VIGENTE" && new Date(certificado.fechaVencimiento) < now) {
       estado = "VENCIDO";
-      await prisma.certificado.update({
-        where: { id: certificado.id },
-        data: { estado: "VENCIDO" },
-      });
+      try {
+        await prisma.certificado.update({
+          where: { id: certificado.id },
+          data: { estado: "VENCIDO" },
+        });
+      } catch (err) {
+        console.warn("No se pudo actualizar estado en BD:", err);
+      }
     }
 
-    // Log the verification
-    const ip =
-      request.headers.get("x-forwarded-for") ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
-    await prisma.logConsulta.create({
-      data: {
-        certificadoId: certificado.id,
-        tipoAccion: "VERIFICACION",
-        ip: ip,
-        detalles: JSON.stringify({ codigo }),
-      },
-    });
+    // Log the verification (opcional si la BD es de solo lectura)
+    try {
+      const ip =
+        request.headers.get("x-forwarded-for") ||
+        request.headers.get("x-real-ip") ||
+        "unknown";
+      await prisma.logConsulta.create({
+        data: {
+          certificadoId: certificado.id,
+          tipoAccion: "VERIFICACION",
+          ip: ip,
+          detalles: JSON.stringify({ codigo }),
+        },
+      });
+    } catch (err) {
+      console.warn("Log de consulta no guardado:", err);
+    }
 
     return NextResponse.json({
       numeroCertificado: certificado.numeroCertificado,
