@@ -146,19 +146,19 @@ function VerificarContent() {
 
       {/* Search Form */}
       <form onSubmit={handleVerificar} className="mb-8">
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
           <input
             type="text"
             value={codigo}
             onChange={(e) => setCodigo(e.target.value.toUpperCase())}
             placeholder="Ej: A7X9-K2M4-P8R1"
-            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-lg font-mono tracking-wider"
+            className="w-full flex-1 px-4 py-3 sm:py-3.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:border-transparent text-base sm:text-lg font-mono tracking-wider shadow-sm"
             required
           />
           <button
             type="submit"
             disabled={buscando}
-            className="bg-[#008b85] hover:bg-[#00706b] text-white font-bold px-8 py-3 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm"
+            className="w-full sm:w-auto bg-[#008b85] hover:bg-[#00706b] active:scale-95 text-white font-bold px-8 py-3 sm:py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm flex items-center justify-center"
           >
             {buscando ? (
               <span className="flex items-center">

@@ -59,28 +59,28 @@ export default function DescargarPage() {
 
       <form
         onSubmit={handleDescargar}
-        className="bg-white rounded-xl shadow-md border border-gray-100 p-8 space-y-5"
+        className="bg-white rounded-2xl shadow-xl border border-slate-100 p-5 sm:p-8 space-y-5"
       >
         {/* Tipo Documento */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
+          <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5">
             Tipo de Documento
           </label>
           <select
             value={tipoDoc}
             onChange={(e) => setTipoDoc(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:border-transparent text-base bg-white"
           >
-            <option value="CC">Cédula de Ciudadanía</option>
-            <option value="CE">Cédula de Extranjería</option>
-            <option value="PA">Pasaporte</option>
-            <option value="TI">Tarjeta de Identidad</option>
+            <option value="CC">Cédula de Ciudadanía (CC)</option>
+            <option value="CE">Cédula de Extranjería (CE)</option>
+            <option value="PA">Pasaporte (PA)</option>
+            <option value="TI">Tarjeta de Identidad (TI)</option>
           </select>
         </div>
 
         {/* Número Documento */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
+          <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5">
             Número de Documento
           </label>
           <input
@@ -88,14 +88,14 @@ export default function DescargarPage() {
             value={numDoc}
             onChange={(e) => setNumDoc(e.target.value.replace(/\D/g, ""))}
             placeholder="Ej: 1234567890"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent font-mono"
+            className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:border-transparent font-mono text-base"
             required
           />
         </div>
 
         {/* Código de Verificación */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
+          <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-1.5">
             Código de Verificación
           </label>
           <input
@@ -103,7 +103,7 @@ export default function DescargarPage() {
             value={codigo}
             onChange={(e) => setCodigo(e.target.value.toUpperCase())}
             placeholder="Ej: A7X9-K2M4-P8R1"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent font-mono tracking-wider"
+            className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#f58220] focus:border-transparent font-mono tracking-wider text-base"
             required
           />
         </div>

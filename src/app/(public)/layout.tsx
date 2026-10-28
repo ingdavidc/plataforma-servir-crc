@@ -4,24 +4,24 @@ import Image from "next/image";
 function Header() {
   return (
     <header className="w-full">
-      {/* Top Bar Corporativo */}
-      <div className="bg-[#0c232e] text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-teal-900/40">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex flex-wrap items-center gap-4 text-center sm:text-left">
+      {/* Top Bar Corporativo - Ultra Responsive */}
+      <div className="bg-[#0c232e] text-slate-300 text-[11px] sm:text-xs py-2 px-3 sm:px-6 lg:px-8 border-b border-teal-900/40">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 text-center sm:text-left">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-4">
             <span className="flex items-center gap-1.5">
-              <svg className="w-3.5 h-3.5 text-[#00a59e]" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-3.5 h-3.5 text-[#00a59e] shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
-              <span>Calle 28 No 20A - 32, B. Jardín — Saravena, Arauca</span>
+              <span className="truncate max-w-[280px] sm:max-w-none">Calle 28 No 20A - 32, B. Jardín — Saravena, Arauca</span>
             </span>
             <span className="hidden md:inline text-slate-600">|</span>
             <a
               href="https://api.whatsapp.com/send?phone=573209522791&text=Hola,%20quisiera%20consultar%20sobre%20certificados%20medicos"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#ff9900] transition-colors"
+              className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#ff9900] transition-colors font-medium"
             >
-              <svg className="w-3.5 h-3.5 text-[#ff9900]" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-3.5 h-3.5 text-[#ff9900] shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               <span>320 952 2791</span>
@@ -33,9 +33,9 @@ function Header() {
               href="https://www.odontomedicinaservircrc.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#00a59e] hover:text-[#ff9900] font-medium transition-colors text-[11px] flex items-center gap-1"
+              className="text-[#00a59e] hover:text-[#ff9900] font-medium transition-colors text-[11px] inline-flex items-center gap-1"
             >
-              <span>Sitio Principal OdontoMedicina</span>
+              <span>Sitio Oficial OdontoMedicina</span>
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -47,18 +47,18 @@ function Header() {
       {/* Main Navbar */}
       <div className="bg-white text-slate-800 shadow-sm border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo Oficial de OdontoMedicina Servir CRC */}
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
               <Image
                 src="/images/logo-odontomedicina-servir.png"
                 alt="OdontoMedicina Servir CRC"
-                width={190}
-                height={90}
-                className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
+                width={200}
+                height={95}
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
                 priority
               />
-              <div className="hidden sm:block border-l border-slate-200 pl-3">
+              <div className="hidden lg:block border-l border-slate-200 pl-3">
                 <span className="block text-[11px] font-bold uppercase tracking-wider text-[#008b85]">
                   Plataforma Oficial
                 </span>
@@ -68,6 +68,7 @@ function Header() {
               </div>
             </Link>
 
+            {/* Navegación Desktop */}
             <nav className="hidden md:flex items-center space-x-6">
               <Link
                 href="/verificar"
@@ -83,18 +84,34 @@ function Header() {
               </Link>
               <Link
                 href="/auth/login"
-                className="text-xs font-bold uppercase tracking-wider bg-[#008b85] hover:bg-[#00706b] text-white px-4 py-2.5 rounded-lg transition-all shadow-sm hover:shadow"
+                className="text-xs font-bold uppercase tracking-wider bg-[#008b85] hover:bg-[#00706b] text-white px-4 py-2.5 rounded-xl transition-all shadow-sm hover:shadow"
               >
                 Panel Autoridades
               </Link>
             </nav>
 
-            <div className="md:hidden">
+            {/* Accesos rápidos en Móvil (1-tap) */}
+            <div className="flex md:hidden items-center gap-1.5">
               <Link
                 href="/verificar"
-                className="text-xs font-bold bg-[#008b85] text-white px-3 py-2 rounded-lg"
+                className="text-[11px] font-bold bg-[#008b85] text-white px-2.5 py-1.5 rounded-lg active:scale-95 transition-transform"
               >
                 Verificar
+              </Link>
+              <Link
+                href="/descargar"
+                className="text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1.5 rounded-lg active:scale-95 transition-transform"
+              >
+                Descargar
+              </Link>
+              <Link
+                href="/auth/login"
+                className="p-1.5 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors"
+                title="Panel de Autoridades"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
               </Link>
             </div>
           </div>
@@ -107,36 +124,36 @@ function Header() {
 function Footer() {
   return (
     <footer className="bg-[#0c232e] text-white mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Logo y descripción */}
           <div className="md:col-span-2 space-y-4">
-            <div className="bg-white p-3 rounded-xl inline-block shadow-md">
+            <div className="bg-white p-3 rounded-2xl inline-block shadow-md">
               <Image
                 src="/images/logo-odontomedicina-servir.png"
                 alt="OdontoMedicina Servir CRC"
-                width={190}
-                height={90}
-                className="h-12 w-auto object-contain"
+                width={200}
+                height={95}
+                className="h-11 sm:h-12 w-auto object-contain"
               />
             </div>
-            <p className="text-sm text-slate-300 leading-relaxed max-w-md">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md">
               Institución especializada prestadora de servicios de salud, medicina laboral y
               Centro de Reconocimiento y Evaluación Psicofísica (CRC) habilitado para la
               expedición de certificados médicos para porte y tenencia de armas de fuego.
             </p>
-            <div className="text-xs text-slate-400 space-y-1">
-              <p><strong className="text-slate-200">Sede Principal:</strong> Calle 28 No 20A - 32, Barrio Jardín, Saravena, Arauca</p>
-              <p><strong className="text-slate-200">Contacto:</strong> 320 952 2791 — jlgomez118@gmail.com</p>
+            <div className="text-xs text-slate-400 space-y-1.5 pt-2">
+              <p><strong className="text-slate-200">Sede Principal:</strong> Calle 28 No 20A - 32, Barrio Jardín, Saravena (Arauca)</p>
+              <p><strong className="text-slate-200">Línea de Atención:</strong> 320 952 2791 — jlgomez118@gmail.com</p>
             </div>
           </div>
 
           {/* Enlaces de la plataforma */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider text-[#ff9900] mb-4">
+            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-[#ff9900] mb-3 sm:mb-4">
               Plataforma en Línea
             </h4>
-            <ul className="space-y-2 text-sm text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
               <li>
                 <Link href="/verificar" className="hover:text-[#00a59e] transition-colors">
                   Verificar Certificado
@@ -144,12 +161,12 @@ function Footer() {
               </li>
               <li>
                 <Link href="/descargar" className="hover:text-[#00a59e] transition-colors">
-                  Descargar Certificado
+                  Descargar Certificado PDF
                 </Link>
               </li>
               <li>
                 <Link href="/auth/login" className="hover:text-[#00a59e] transition-colors">
-                  Panel de Autoridades (DGSM / DCCAE)
+                  Panel Autoridades (DGSM / DCCAE)
                 </Link>
               </li>
               <li>
@@ -167,7 +184,7 @@ function Footer() {
 
           {/* Marco Normativo Oficial */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider text-[#ff9900] mb-4">
+            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-[#ff9900] mb-3 sm:mb-4">
               Marco Legal Vigente
             </h4>
             <ul className="space-y-2 text-xs text-slate-300">
@@ -192,7 +209,7 @@ function Footer() {
         </div>
 
         {/* Barra inferior: Derechos de autor y Powered by DC Telemática */}
-        <div className="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
           <div>
             © 2026 <strong>ODONTOMEDICINA SERVIR CRC S.A.S.</strong> — Todos los derechos reservados
           </div>
