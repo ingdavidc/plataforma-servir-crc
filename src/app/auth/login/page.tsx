@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -105,6 +106,27 @@ export default function LoginPage() {
             </p>
           </div>
         </form>
+
+        <div className="mt-8 text-center">
+          <a
+            href="https://www.dctelematica.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/25 transition-all duration-300"
+            title="Visitar DC Telemática - www.dctelematica.com"
+          >
+            <span className="text-[11px] font-medium tracking-wider text-blue-200/80 group-hover:text-white transition-colors duration-300">
+              Powered by
+            </span>
+            <Image
+              src="/images/logo-dctelematica.png"
+              alt="DC Telemática"
+              width={70}
+              height={24}
+              className="h-4.5 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-105 group-hover:-translate-y-0.5 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"
+            />
+          </a>
+        </div>
       </div>
     </div>
   );

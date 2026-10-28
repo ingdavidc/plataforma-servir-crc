@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 function Header() {
   return (
@@ -92,8 +93,28 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-blue-800 mt-6 pt-4 text-center text-xs text-blue-300">
-          © 2026 SERVIR CRC — Todos los derechos reservados
+        <div className="border-t border-blue-800/60 mt-8 pt-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-blue-300">
+          <div>
+            © 2026 SERVIR CRC — Todos los derechos reservados
+          </div>
+          <a
+            href="https://www.dctelematica.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300"
+            title="Visitar DC Telemática - www.dctelematica.com"
+          >
+            <span className="text-[11px] font-medium tracking-wider text-blue-200/80 group-hover:text-white transition-colors duration-300">
+              Powered by
+            </span>
+            <Image
+              src="/images/logo-dctelematica.png"
+              alt="DC Telemática"
+              width={75}
+              height={26}
+              className="h-5 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-105 group-hover:-translate-y-0.5 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.55)]"
+            />
+          </a>
         </div>
       </div>
     </footer>

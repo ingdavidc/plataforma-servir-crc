@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 interface UserSession {
   nombre: string;
@@ -137,8 +138,30 @@ export default function PanelLayout({
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-4 text-center text-xs text-gray-500">
-        SERVIR CRC — Sistema de Consulta para Sanidad Militar (DGSM) y Control Comercio de Armas (DCCAE)
+      <footer className="bg-white border-t border-gray-200 py-4 text-xs text-gray-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span>
+            SERVIR CRC — Sistema de Consulta para Sanidad Militar (DGSM) y Control Comercio de Armas (DCCAE)
+          </span>
+          <a
+            href="https://www.dctelematica.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all duration-300"
+            title="Visitar DC Telemática - www.dctelematica.com"
+          >
+            <span className="text-[11px] font-medium tracking-wider text-gray-400 group-hover:text-gray-700 transition-colors duration-300">
+              Powered by
+            </span>
+            <Image
+              src="/images/logo-dctelematica.png"
+              alt="DC Telemática"
+              width={70}
+              height={24}
+              className="h-4.5 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-105 group-hover:-translate-y-0.5 group-hover:drop-shadow-[0_2px_6px_rgba(220,38,38,0.35)]"
+            />
+          </a>
+        </div>
       </footer>
     </div>
   );
