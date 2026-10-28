@@ -2,11 +2,15 @@
 
 :root {
   --background: #f8fafc;
-  --foreground: #0f172a;
-  --primary: #1e3a5f;
-  --primary-light: #2d5a8e;
-  --primary-dark: #0f2340;
-  --accent: #3b82f6;
+  --foreground: #0f2b38;
+  --primary: #008b85;
+  --primary-light: #00a59e;
+  --primary-dark: #0c232e;
+  --accent: #f58220;
+  --accent-hover: #dc7016;
+  --corporate-teal: #00a59e;
+  --corporate-orange: #ff9900;
+  --corporate-navy: #0f2b38;
   --success: #16a34a;
   --warning: #f59e0b;
   --danger: #dc2626;
@@ -19,6 +23,10 @@
   --color-primary-light: var(--primary-light);
   --color-primary-dark: var(--primary-dark);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-corporate-teal: var(--corporate-teal);
+  --color-corporate-orange: var(--corporate-orange);
+  --color-corporate-navy: var(--corporate-navy);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);

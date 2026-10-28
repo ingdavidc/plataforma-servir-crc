@@ -199,29 +199,29 @@ export default function PanelDashboard() {
         </div>
 
         {/* Cortes Diarios Card */}
-        <div className="lg:col-span-2 bg-gradient-to-br from-primary to-primary-light text-white rounded-xl shadow-sm p-6 flex flex-col justify-between">
+        <div className="lg:col-span-2 bg-gradient-to-br from-[#0c232e] via-[#008b85] to-[#00a59e] text-white rounded-2xl shadow-sm p-6 flex flex-col justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-blue-200 mb-3">
+            <div className="inline-flex items-center gap-2 bg-[#ff9900]/20 border border-[#ff9900]/40 text-[#ffb84d] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
               <span>Resolución 2056 de 2007 — Art. 4</span>
             </div>
             <h2 className="text-xl font-bold mb-2">Cortes Diarios para Sanidad Militar y DCCAE</h2>
-            <p className="text-blue-100 text-sm leading-relaxed mb-4">
+            <p className="text-teal-50/90 text-sm leading-relaxed mb-4">
               La resolución exige la generación y reporte de certificados con dos cortes diarios:
               a las <strong className="text-white">09:00 horas</strong> y a las <strong className="text-white">16:30 horas</strong>.
-              Consulte la relación diaria de aspirantes evaluados, exporte consolidados o verifique reportes para las seccionales.
+              Consulte la relación diaria de aspirantes evaluados por OdontoMedicina Servir CRC, exporte consolidados o verifique reportes para las seccionales.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3 pt-4 border-t border-blue-400/20">
+          <div className="flex flex-wrap gap-3 pt-4 border-t border-white/20">
             <Link
               href="/panel/cortes"
-              className="bg-white text-primary hover:bg-blue-50 font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors shadow-sm"
+              className="bg-[#f58220] hover:bg-[#dc7016] text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-all shadow-md hover:shadow-lg"
             >
               Ver Cortes Diarios de Hoy →
             </Link>
             <Link
               href="/panel/certificados"
-              className="bg-primary-dark/50 hover:bg-primary-dark text-white font-medium px-4 py-2.5 rounded-lg text-sm transition-colors border border-blue-300/20"
+              className="bg-white/10 hover:bg-white/20 text-white font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors border border-white/20"
             >
               Buscador Avanzado de Certificados
             </Link>

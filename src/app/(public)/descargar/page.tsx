@@ -119,7 +119,7 @@ export default function DescargarPage() {
         <button
           type="submit"
           disabled={buscando}
-          className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+          className="w-full bg-[#008b85] hover:bg-[#00706b] text-white font-bold py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 uppercase tracking-wider text-sm"
         >
           {buscando ? (
             <>

@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SERVIR CRC — Plataforma de Verificación de Certificados",
+  title: "ODONTOMEDICINA SERVIR CRC — Plataforma Oficial de Certificados",
   description:
-    "Portal oficial para verificar y descargar certificados médicos de aptitud psicofísica para porte y tenencia de armas de fuego.",
+    "Portal oficial de OdontoMedicina Servir CRC para verificar y descargar certificados médicos de aptitud psicofísica para porte y tenencia de armas de fuego — Resolución 2056 de 2007.",
 };
 
 export default function RootLayout({

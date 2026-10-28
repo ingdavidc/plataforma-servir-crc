@@ -58,17 +58,23 @@ export default function PanelLayout({
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Top Navigation */}
-      <header className="bg-primary text-white shadow-md">
+      <header className="bg-[#0c232e] text-white shadow-md border-b border-teal-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <Link href="/panel" className="flex items-center space-x-3">
-                <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-primary font-bold">
-                  S
+                <div className="bg-white px-2.5 py-1 rounded-lg shadow-sm">
+                  <Image
+                    src="/images/logo-odontomedicina-servir.png"
+                    alt="OdontoMedicina Servir CRC"
+                    width={130}
+                    height={45}
+                    className="h-8 w-auto object-contain"
+                  />
                 </div>
-                <div>
-                  <span className="font-bold tracking-tight text-lg">SERVIR CRC</span>
-                  <span className="text-xs text-blue-200 block">Panel de Autoridades & Control</span>
+                <div className="hidden sm:block">
+                  <span className="font-bold tracking-tight text-sm block">ODONTOMEDICINA SERVIR CRC</span>
+                  <span className="text-[11px] text-teal-300 block">Panel de Control & Auditoría</span>
                 </div>
               </Link>
             </div>
@@ -78,8 +84,8 @@ export default function PanelLayout({
                 href="/panel"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   pathname === "/panel"
-                    ? "bg-primary-light text-white"
-                    : "text-blue-100 hover:bg-primary-light/60 hover:text-white"
+                    ? "bg-[#008b85] text-white"
+                    : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 Dashboard
@@ -88,8 +94,8 @@ export default function PanelLayout({
                 href="/panel/certificados"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   pathname.startsWith("/panel/certificados")
-                    ? "bg-primary-light text-white"
-                    : "text-blue-100 hover:bg-primary-light/60 hover:text-white"
+                    ? "bg-[#008b85] text-white"
+                    : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 Certificados
@@ -98,8 +104,8 @@ export default function PanelLayout({
                 href="/panel/cortes"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   pathname.startsWith("/panel/cortes")
-                    ? "bg-primary-light text-white"
-                    : "text-blue-100 hover:bg-primary-light/60 hover:text-white"
+                    ? "bg-[#008b85] text-white"
+                    : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 Cortes Diarios (Res. 2056)

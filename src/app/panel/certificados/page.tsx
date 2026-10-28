@@ -123,7 +123,7 @@ function CertificadosContent() {
           <div className="sm:col-span-2 flex items-end">
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary-light text-white font-medium py-2 rounded-lg text-sm transition-colors"
+              className="w-full bg-[#008b85] hover:bg-[#00706b] text-white font-bold py-2 rounded-lg text-sm transition-colors"
             >
               Filtrar
             </button>

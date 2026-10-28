@@ -158,7 +158,7 @@ function VerificarContent() {
           <button
             type="submit"
             disabled={buscando}
-            className="bg-primary hover:bg-primary-light text-white font-semibold px-8 py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[#008b85] hover:bg-[#00706b] text-white font-bold px-8 py-3 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider text-sm"
           >
             {buscando ? (
               <span className="flex items-center">

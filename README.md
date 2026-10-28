@@ -1,4 +1,7 @@
-# 🇨🇴 SERVIR CRC — Plataforma de Verificación y Control de Certificados Médicos Psicofísicos
+# 🇨🇴 ODONTOMEDICINA SERVIR CRC — Plataforma de Verificación y Control de Certificados Médicos Psicofísicos
+> Empresa: **OdontoMedicina Servir CRC** — [www.odontomedicinaservircrc.com](https://www.odontomedicinaservircrc.com/)  
+> Sede: Calle 28 No 20A - 32, B. Jardín, Saravena (Arauca) — Tel: 320 952 2791  
+> Desarrollado por: [DC Telemática](https://www.dctelematica.com)
 ### Cumplimiento Oficial de la **Resolución 2056 de 2007**
 **Dirección General de Sanidad Militar (DGSM) & Departamento Control Comercio de Armas, Municiones y Explosivos (DCCAE)**
 

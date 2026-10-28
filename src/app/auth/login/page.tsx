@@ -44,19 +44,28 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary via-primary-light to-accent flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#0c232e] via-[#008b85] to-[#00a59e] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
-            <span className="text-primary font-bold text-2xl">S</span>
+          <div className="bg-white px-5 py-2.5 rounded-2xl inline-block shadow-2xl mb-4 border border-white/30">
+            <Image
+              src="/images/logo-odontomedicina-servir.png"
+              alt="Logo OdontoMedicina Servir CRC"
+              width={180}
+              height={80}
+              className="h-12 w-auto object-contain mx-auto"
+              priority
+            />
           </div>
-          <h1 className="text-2xl font-bold text-white">Panel de Autoridades</h1>
-          <p className="text-blue-200 mt-1">SERVIR CRC</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Panel de Autoridades</h1>
+          <p className="text-teal-100 text-xs mt-1 font-medium">
+            Dirección General de Sanidad Militar & DCCAE
+          </p>
         </div>
 
         <form
           onSubmit={handleLogin}
-          className="bg-white rounded-xl shadow-2xl p-8 space-y-5"
+          className="bg-white rounded-2xl shadow-2xl p-8 space-y-5 border border-slate-100"
         >
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -95,9 +104,9 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50"
+            className="w-full bg-[#008b85] hover:bg-[#00706b] text-white font-bold py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 text-sm uppercase tracking-wider"
           >
-            {loading ? "Ingresando..." : "Ingresar"}
+            {loading ? "Ingresando..." : "Ingresar al Panel"}
           </button>
 
           <div className="text-center">
