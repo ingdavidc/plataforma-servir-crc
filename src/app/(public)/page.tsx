@@ -41,7 +41,7 @@ export default function HomePage() {
             ODONTOMEDICINA SERVIR CRC
           </h1>
           <p className="text-sm sm:text-xl md:text-2xl text-teal-100 font-medium mb-2 sm:mb-3 px-2">
-            Plataforma de Verificación y Control de Certificados Médicos Psicofísicos
+            Plataforma Sistematizada de Verificación y Control de Certificados Médicos Psicofísicos
           </p>
           <p className="text-teal-50/90 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
             Consulte en línea, verifique la autenticidad y descargue certificados médicos de aptitud psicofísica

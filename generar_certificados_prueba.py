@@ -2,10 +2,61 @@ import os
 from reportlab.lib.pagesizes import legal
 from reportlab.pdfgen import canvas
 from reportlab.lib import colors
+from reportlab.graphics.barcode import qr
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics import renderPDF
+
+def draw_security_watermark(c, width, height, text_consecutivo=""):
+    """
+    Dibuja una marca de agua de seguridad institucional en segundo plano:
+    - Microtrama diagonal de protección anticopia (tono papel de seguridad)
+    - Marca de agua central oficial con relieve y baja opacidad
+    - Sello concéntrico de seguridad biométrica
+    """
+    # 1. Trama diagonal de seguridad de fondo (Micro-watermarks tipo papel de seguridad)
+    c.saveState()
+    c.setFillAlpha(0.28)
+    c.setFillColor(colors.HexColor("#e2e8f0"))
+    c.setFont("Helvetica-Bold", 7.5)
+    c.translate(width / 2.0, height / 2.0)
+    c.rotate(35)
+    
+    phrase = "  •  SERVIR CRC  •  SEGURIDAD Y CONTROL DGSM  •  RESOLUCIÓN 2056 DE 2007  •  DOCUMENTO OFICIAL  •  "
+    for y_offset in range(-620, 680, 95):
+        c.drawCentredString(0, y_offset, phrase * 2)
+    c.restoreState()
+
+    # 2. Marca de agua central prominente con opacidad suave
+    c.saveState()
+    c.translate(width / 2.0, height / 2.0 - 20)
+    c.rotate(40)
+    c.setFillAlpha(0.30)
+    c.setFillColor(colors.HexColor("#e2e8f0"))
+    
+    c.setFont("Helvetica-Bold", 32)
+    c.drawCentredString(0, 36, "DOCUMENTO OFICIAL AUTÉNTICO")
+    c.setFont("Helvetica-Bold", 18)
+    c.drawCentredString(0, 8, "RESOLUCIÓN 2056 DE 2007 — DGSM")
+    c.setFont("Helvetica-Bold", 12)
+    c.drawCentredString(0, -16, f"CENTRO DE RECONOCIMIENTO SERVIR CRC  •  CONSECUTIVO: {text_consecutivo}")
+    c.restoreState()
+
+    # 3. Sello circular de seguridad en segundo plano
+    c.saveState()
+    c.translate(width / 2.0, height / 2.0 - 20)
+    c.setStrokeAlpha(0.20)
+    c.setStrokeColor(colors.HexColor("#cbd5e1"))
+    c.circle(0, 0, 120, stroke=1, fill=0)
+    c.circle(0, 0, 114, stroke=1, fill=0)
+    c.circle(0, 0, 86, stroke=1, fill=0)
+    c.restoreState()
 
 def create_certificate_pdf(filepath, data):
     c = canvas.Canvas(filepath, pagesize=legal)
     width, height = legal # 612 x 1008 points (oficio)
+
+    # 0. Marca de agua de seguridad institucional en segundo plano
+    draw_security_watermark(c, width, height, data.get("numero_certificado", ""))
 
     # Margins and header
     c.setLineWidth(1)
@@ -172,23 +223,37 @@ def create_certificate_pdf(filepath, data):
     c.setFillColor(colors.black)
     
     c.setFont("Helvetica-Bold", 8)
-    c.drawString(50, y + 10, "VALIDACIÓN DE AUTENTICIDAD Y SEGURIDAD DIGITAL:")
+    c.drawString(50, y + 12, "VALIDACIÓN DE AUTENTICIDAD Y SEGURIDAD DIGITAL:")
     c.setFont("Helvetica", 7.5)
-    c.drawString(50, y - 5, "Consulte y verifique la vigencia de este certificado en:")
+    c.drawString(50, y - 4, "Consulte y verifique la vigencia de este certificado en:")
     c.setFont("Helvetica-Bold", 8)
-    c.drawString(280, y - 5, "https://servircrc.com/verificar")
+    c.drawString(275, y - 4, "https://plataforma-servir-crc.vercel.app/verificar")
     
     c.setFont("Helvetica-Bold", 8)
     c.drawString(50, y - 20, "CÓDIGO DE VERIFICACIÓN:")
     c.setFont("Helvetica-Bold", 10)
     c.setFillColor(colors.HexColor("#1e3a5f"))
-    c.drawString(185, y - 20, data.get("codigo_verificacion", ""))
+    cod_verif = data.get("codigo_verificacion", "")
+    c.drawString(185, y - 20, cod_verif)
     c.setFillColor(colors.black)
+
+    # Código QR de Verificación Rápida Móvil
+    try:
+        url_verificacion = f"https://plataforma-servir-crc.vercel.app/verificar?codigo={cod_verif}"
+        qr_code = qr.QrCodeWidget(url_verificacion)
+        bounds = qr_code.getBounds()
+        qr_w = bounds[2] - bounds[0]
+        qr_h = bounds[3] - bounds[1]
+        qr_drawing = Drawing(46, 46, transform=[46.0 / qr_w, 0, 0, 46.0 / qr_h, 0, 0])
+        qr_drawing.add(qr_code)
+        renderPDF.draw(qr_drawing, c, width - 95, y - 26)
+    except Exception as e:
+        pass
 
     # Footer note
     c.setFont("Helvetica", 6.5)
     c.drawString(45, 45, "Resolución 2056 de 2007 MinDefensa - DGSM. Validez máxima de hasta sesenta (60) días calendario.")
-    c.drawRightString(width - 45, 45, "Impreso en Sistema Sistematizado SERVIR CRC")
+    c.drawRightString(width - 45, 45, "Expedido en Plataforma Sistematizada SERVIR CRC")
 
     c.save()
 
